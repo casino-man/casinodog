@@ -58,9 +58,7 @@ class AddOperatorAccessKey extends Command
         ];
         $operator_model = new OperatorAccess();
         $operator_model->insert($data);
-        $this->line('');       
-        $this->line('');       
-
+        $this->line('');
         $this->info('Sucessfully added key. API key details:');       
         $this->line('');       
 

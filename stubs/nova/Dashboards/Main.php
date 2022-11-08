@@ -4,6 +4,7 @@ namespace App\Nova\Dashboards;
 
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Dashboards\Main as Dashboard;
+use App\Nova\Metrics\DefaultGamelistTable;
 
 class Main extends Dashboard
 {
@@ -15,7 +16,7 @@ class Main extends Dashboard
     public function cards()
     {
         return [
-            new Help,
+            (new DefaultGamelistTable)->width("full"),
         ];
     }
 }

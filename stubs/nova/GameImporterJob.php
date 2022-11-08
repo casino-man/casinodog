@@ -25,7 +25,7 @@ class GameImporterJob extends Resource
      * @var string
      */
     public static $model = \Wainwright\CasinoDog\Models\GameImporterJob::class;
-    public static $group = 'Importer Tool';
+    public static $group = 'External Import Tool';
     public static $showPollingToggle = true;
     public static $pollingInterval = 10;
     public static $polling = true;

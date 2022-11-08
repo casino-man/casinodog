@@ -18,7 +18,7 @@ use Wainwright\CasinoDog\Commands\DatabaseObserve;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\URL;
-
+use Wainwright\CasinoDog\Middleware\SecureHeaders;
 class CasinoDogServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
@@ -32,7 +32,7 @@ class CasinoDogServiceProvider extends PackageServiceProvider
             ->hasCommands(TestUnzip::class, DatabaseObserve::class, RetrieveDefaultGameslist::class, StoreDefaultGameslist::class, CreateGameProvider::class, AddOperatorAccessKey::class, AutoConfigCasinoDog::class, ControlCasinoDog::class, MigrateCasinoDog::class);
 
             $kernel = app(\Illuminate\Contracts\Http\Kernel::class);
-            //$kernel->pushMiddleware(\Wainwright\CasinoDog\Middleware\RestrictIpAddressMiddleware::class);
+            $kernel->pushMiddleware(\Wainwright\CasinoDog\Middleware\SecureHeaders::class);
 
             //Register the proxy
             $this->app->bind('ProxyHelper', function($app) {
@@ -58,7 +58,25 @@ class CasinoDogServiceProvider extends PackageServiceProvider
             if ($this->app->environment('production')) {
                 URL::forceScheme('https');
             }
+            $this->registerPanelCommands();
 
+    }
+
+    public function registerPanelCommands()
+    {
+         $this->commands([
+            \Laravel\Nova\Console\InstallCommand::class,
+            \Laravel\Nova\Console\PublishCommand::class,
+            \Laravel\Nova\Console\DashboardCommand::class,
+            \Laravel\Nova\Console\ResourceCommand::class,
+            \Laravel\Nova\Console\BaseResourceCommand::class,
+            \Laravel\Nova\Console\TableCommand::class,
+            \Laravel\Nova\Console\TranslateCommand::class,
+            \Laravel\Nova\Console\ToolCommand::class,
+            \Laravel\Nova\Console\TrendCommand::class,
+            \Laravel\Nova\Console\UserCommand::class,
+            \Laravel\Nova\Console\StubPublishCommand::class
+        ]);
     }
 
 }

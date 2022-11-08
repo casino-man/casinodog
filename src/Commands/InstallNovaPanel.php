@@ -13,9 +13,7 @@ trait InstallNovaPanel
     {
         try {
         \Artisan::call('nova:install');
-
         } catch(\Exception $e) {
-            
         }
         $this->installNovaStubs($verbose);
     }

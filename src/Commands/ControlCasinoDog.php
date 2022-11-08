@@ -55,6 +55,11 @@ class ControlCasinoDog extends Command
                 return $env;
             }
 
+            if($task === 'set-global-api-limit') {
+                $this->replaceInBetweenInFile("perMinute\(", "\)", '500', base_path('app/Providers/RouteServiceProvider.php'));
+                $this->replaceInFile('$request->ip()', '$request->DogGetIP()', base_path('app/Providers/RouteServiceProvider.php'));
+            }
+
 
         } else {
 
@@ -136,15 +141,7 @@ class ControlCasinoDog extends Command
                 $this->info(json_encode($data_insert));
             }
 	    }
-
-	    if($this->confirm('Do you want to import DB list?')) {
-            $http = Http::get('https://ignitebets.com/gameslist.json');
-            $http = json_decode($http, true);
-            foreach($http as $game) {
-            Gameslist::insert($game);
-	    }
-        }
-        
+                
 	}
         return self::SUCCESS;
     }

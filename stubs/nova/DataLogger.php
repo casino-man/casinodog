@@ -37,6 +37,8 @@ class DataLogger extends Resource
     public static $title = 'id';
     public static $tableStyle = 'tight';
     public static $clickAction = 'preview';
+    public static $name = 'Logger';
+    public static $group = 'Production';
 
     /**
      * The columns that should be searched.

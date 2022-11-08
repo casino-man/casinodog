@@ -1,5 +1,5 @@
 {
-    "name": "wainwright/casino-dog",
+    "name": "wainwright/casino-dog-dev",
     "description": "Casino Dog is a tool to alter outcome of casino games. Tool originating from David G. Wainwright (HollywoodTV) and used by big brand-names like Sportsbet.io, Stake.com, Bitstarz.com, Softswiss.com, Betsson Group and many more.",
     "keywords": [
         "wainwright", "casino games", "slotmachines", "pragmatic play", "bitstarz", "betsson", "evolution", "booongo", "playson", "relaxgaming", "1x2gaming", "hacksaw",
@@ -21,6 +21,7 @@
         "livewire/livewire": "*",
         "ext-zip": "*",
         "ext-curl": "*",
+        "wainwright/panel": "^4.0", 
         "ext-redis": "*",
         "spatie/laravel-google-fonts": "^1.0",
         "spatie/laravel-package-tools": "^1.13.5",

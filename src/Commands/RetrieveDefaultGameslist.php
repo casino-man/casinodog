@@ -119,7 +119,6 @@ class RetrieveDefaultGameslist extends Command
 
     public function retrieve($gameprovider)
     {
-
         // select gameprovider's main controller, from config
         $gameslist = Gameslist::all()->where('provider', $gameprovider);
         $game_controller = config('casino-dog.games.'.$gameprovider.'.controller');
