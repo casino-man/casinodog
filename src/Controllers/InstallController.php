@@ -92,7 +92,7 @@ class InstallController
 
             }
 
-        if(!file_exists(base_path('.env'))) {
+        if(file_exists(base_path('.env'))) {
             $path = base_path('.env.backup');
             copy(base_path('.env'), base_path('.env.backup'));
             \Artisan::call('down');
