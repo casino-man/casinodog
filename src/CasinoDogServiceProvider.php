@@ -32,7 +32,7 @@ class CasinoDogServiceProvider extends PackageServiceProvider
             ->hasCommands(TestUnzip::class, DatabaseObserve::class, RetrieveDefaultGameslist::class, StoreDefaultGameslist::class, CreateGameProvider::class, AddOperatorAccessKey::class, AutoConfigCasinoDog::class, ControlCasinoDog::class, MigrateCasinoDog::class);
 
             $kernel = app(\Illuminate\Contracts\Http\Kernel::class);
-            $kernel->pushMiddleware(\Wainwright\CasinoDog\Middleware\SecureHeaders::class);
+            //$kernel->pushMiddleware(\Wainwright\CasinoDog\Middleware\SecureHeaders::class);
 
             //Register the proxy
             $this->app->bind('ProxyHelper', function($app) {
